@@ -1,0 +1,5 @@
+<?xml version="1"?>
+
+<launch>
+	<node pkg="rosserial_arduino" type="serial_node.py" name="serial" args="_port:=/dev/ttyACM0" />
+</launch>

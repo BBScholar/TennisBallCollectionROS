@@ -1,0 +1,23 @@
+<?xml version="1"?>
+
+<launch>
+	<arg name="use_lidar" default="true" />
+
+	<include file="$(find motor_control)/launch/motor_control.launch">
+	</include>
+
+		
+	<group if="$(arg use_lidar)" >
+		<arg name="lidar_port" default="/dev/ttyUSB0" />
+
+		<param name="serial_port" value="$(arg lidar_port)" type="string" />
+		<param name="inverted" value="false" type="bool" />
+		<param name="angle_compensate" value="true" type="bool" />
+
+		<include file="$(find rplidar_ros)/launch/rplidar.launch" >
+			
+		</include>
+	</group>
+
+
+</launch>
