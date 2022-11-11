@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="leo">
+    <link name="base">
+        <visual>
+            <origin xyz="0.5 0.166 0.125" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="1 0.33 0.25"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.5 0.166 0.125" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="1 0.33 0.25"/>
+            </geometry>
+        </collision>
+    </link>
+
+
+    <xacro:macro name="xacro_name" params="side reflect_x reflect_y">
+        <link name="wheel_${side}">
+	        <visual>
+                <geometry>
+                    <cylinder radius="0.15" length="0.05"/>
+                </geometry>
+            </visual>
+            <collision>
+                <geometry>
+                    <cylinder radius="0.15" length="0.05"/>
+                </geometry>
+            </collision>
+        </link>
+
+        <joint name="base_wheel_${side}_joint" type="continuous">
+            <parent link="base"/>
+            <child link="wheel_${side}"/>
+            <origin xyz="${reflect_x * 0.5} ${reflect_y * 0.5} 0" rpy="1.570796 0 0"/>
+            <axis xyz="0 0 1"/>
+        </joint>
+    </xacro:macro>
+
+    <xacro:xacro_name side="left"  reflect_x="-1" reflect_y="1"/>
+    <xacro:xacro_name side="left"  reflect_x="-1" reflect_y="-1"/>
+    <xacro:xacro_name side="right" reflect_x="1"  reflect_y="1"/>
+    <xacro:xacro_name side="right" reflect_x="1"  reflect_y="-1"/>
+
+    <xacro:include filename="$(find gazebo_plugins)/test/multi_robot_scenario/xacro/laser/hokuyo.xacro"/>
+    <xacro:laser name="laser_vert_bottom" parent="base" xyz="0.3157984464801903 -0.002068548615034871 0.5099999434059285" rpy="3.1354753 -1.3045001 0.0024658" meshes="package://gazebo_plugins/test/multi_robot_scenario/meshes/laser"/>
+
+    <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
+    <xacro:VLP-16 parent="base" name="laser_horiz" topic="laser_horiz/packets" hz="10" samples="440" gpu="false">
+        <origin xyz="0.2325416305773505 -0.0001380069427607134 1.920122926231907" rpy="-0.0012068 0.114646 -0.0015308"/>
+    </xacro:VLP-16>
+
+</robot>
