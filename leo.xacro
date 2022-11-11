@@ -15,47 +15,6 @@
         </collision>
     </link>
 
-    <link name="laser_vert_bottom">
-        <visual>
-            <geometry>
-                <box size="0.062 0.062 0.087"/>
-            </geometry>
-        </visual>
-        <collision>
-            <geometry>
-                <box size="0.062 0.062 0.087"/>
-            </geometry>
-        </collision>
-    </link>
-
-
-
-    <link name="wheel_center">
-        <visual>
-            <geometry>
-                <cylinder radius="0.15" length="0.05"/>
-            </geometry>
-        </visual>
-        <collision>
-            <geometry>
-                <cylinder radius="0.15" length="0.05"/>
-            </geometry>
-        </collision>
-    </link>
-
-
-
-
-
-
-    <joint name="base_wheel_center_joint" type="continuous">
-        <parent link="base"/>
-        <child link="wheel_center"/>
-        <origin xyz="0.25 0.5 0.15" rpy="-1.570796 0 0"/>
-        <axis xyz="0 1 0"/>
-    </joint>
-
-
 
     <xacro:macro name="xacro_name" params="side reflect_x reflect_y">
         <link name="wheel_${side}">
