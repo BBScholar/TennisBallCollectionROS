@@ -4,6 +4,13 @@
   <xacro:include filename="$(find tennis-description)/urdf/leo.gazebo.xacro" />
   <xacro:include filename="$(find tennis-description)/urdf/transmission.xacro" />
 
+  <xacro:property name="robotlxx" value="0.385" />
+  <xacro:property name="robotlxy" value="0" />
+  <xacro:property name="robotlxz" value="0" />
+  <xacro:property name="robotlyy" value="1.92098166" />
+  <xacro:property name="robotlyz" value="0" />
+  <xacro:property name="robotlzz" value="1.844169" />
+
   <link name="base">
     <visual>
       <origin xyz="0.5 0.166 0.125" rpy="0.0 0.0 0.0" />
@@ -17,8 +24,15 @@
         <box size="1 0.33 0.25" />
       </geometry>
     </collision>
+    <inertial>
+      <mass value="36" />
+      <inertia ixx="${robotlxx}" ixy="${robotlxy}" ixz="${robotlxz}" iyy="${robotlyy}" iyz="${robotlyz}" izz="${robotlzz}" />
+    </inertial>
   </link>
 
+  <xacro:macro name="cylinder_inertia" params="m r h">
+    <inertia ixx="${m*(3*r*r+h*h)/12}" ixy="0" ixz="0" iyy="${m*(3*r*r+h*h)/12}" iyz="0" izz="${m*r*r/2}" />
+  </xacro:macro>
 
   <xacro:macro name="wheel" params="side reflect_x reflect_y">
     <link name="wheel_${side}">
@@ -34,7 +48,8 @@
       </collision>
       <inertial>
         <origin xyz="0 0 0" rpy="${pi/2} 0 0" />
-        <mass value="${wheelmass}" />
+        <mass value="1" />
+        <xacro:cylinder_inertia m="1" r="0.15" h="0.05" />
       </inertial>
 
     </link>
@@ -44,6 +59,7 @@
       <child link="wheel_${side}" />
       <origin xyz="${reflect_x * 0.5} ${reflect_y * 0.5} 0" rpy="1.570796 0 0" />
       <axis xyz="0 0 1" />
+      <!-- <dynamics damping="0.8" friction="2.0" /> -->
     </joint>
   </xacro:macro>
 
@@ -54,10 +70,23 @@
 
   <link name="imu_link" />
   <joint name="imu_joint" type="fixed">
-    <parent link="base_link" />
+    <parent link="base" />
     <child link="imu_link" />
     <origin xyz="0.35 -0.1 0" rpy="0 0 0" />
   </joint>
+
+  <!-- Create a root link with no inertia to make the solver happy and raise the robot above the floor -->
+  <link name="base_root">
+    <!-- <origin xyz="${bodyx} ${bodyy} ${bodyz}" rpy="${bodyroll} ${bodypitch} ${bodyyaw}" /> -->
+  </link>
+
+  <!-- Connect that link to the base link in the middle of the robot -->
+  <joint name="base_link_joint" type="fixed">
+    <origin xyz="0 0 0.15" rpy="0 0 0" />
+    <parent link="base_root" />
+    <child link="base" />
+  </joint>
+
 
   <xacro:include filename="$(find gazebo_plugins)/test/multi_robot_scenario/xacro/laser/hokuyo.xacro" />
   <xacro:laser name="laser_vert_bottom" parent="base" xyz="0.3157984464801903 -0.002068548615034871 0.5099999434059285" rpy="3.1354753 -1.3045001 0.0024658" meshes="package://gazebo_plugins/test/multi_robot_scenario/meshes/laser" />

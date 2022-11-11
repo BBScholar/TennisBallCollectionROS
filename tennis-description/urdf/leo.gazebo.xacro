@@ -25,7 +25,7 @@
     </plugin>
   </gazebo>
 
-  <gazebo reference="base_link">
+  <gazebo reference="base">
     <material>Gazebo/Blue</material>
   </gazebo>
 
