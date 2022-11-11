@@ -1,0 +1,17 @@
+Index: nav_node.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/nav_node.py b/nav_node.py
+--- a/nav_node.py	
++++ b/nav_node.py	
+@@ -10,7 +10,7 @@
+ 
+ 
+ 
+-pub = rospy.Publisher('turtle1/cmd_vel', Twist, queue_size=1)
++pub = rospy.Publisher('dif/cmd_vel', Twist, queue_size=1)
+ 
+ lidar_sub = None
+ wall_ahead = False

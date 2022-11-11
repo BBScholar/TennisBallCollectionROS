@@ -1,0 +1,20 @@
+Index: leo.xacro
+===================================================================
+diff --git a/leo.xacro b/leo.xacro
+--- a/leo.xacro	
++++ b/leo.xacro	
+@@ -38,10 +38,10 @@
+         </joint>
+     </xacro:macro>
+ 
+-    <xacro:xacro_name side="left"  reflect_x="-1" reflect_y="1"/>
+-    <xacro:xacro_name side="left"  reflect_x="-1" reflect_y="-1"/>
+-    <xacro:xacro_name side="right" reflect_x="1"  reflect_y="1"/>
+-    <xacro:xacro_name side="right" reflect_x="1"  reflect_y="-1"/>
++    <xacro:xacro_name side="left_front"  reflect_x="-1" reflect_y="1"/>
++    <xacro:xacro_name side="left_back"  reflect_x="-1" reflect_y="-1"/>
++    <xacro:xacro_name side="right_front" reflect_x="1"  reflect_y="1"/>
++    <xacro:xacro_name side="right_back" reflect_x="1"  reflect_y="-1"/>
+ 
+     <xacro:include filename="$(find gazebo_plugins)/test/multi_robot_scenario/xacro/laser/hokuyo.xacro"/>
+     <xacro:laser name="laser_vert_bottom" parent="base" xyz="0.3157984464801903 -0.002068548615034871 0.5099999434059285" rpy="3.1354753 -1.3045001 0.0024658" meshes="package://gazebo_plugins/test/multi_robot_scenario/meshes/laser"/>

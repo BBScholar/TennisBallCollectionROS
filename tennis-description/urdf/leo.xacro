@@ -89,11 +89,6 @@
 
 
   <xacro:include filename="$(find gazebo_plugins)/test/multi_robot_scenario/xacro/laser/hokuyo.xacro" />
-  <xacro:laser name="laser_vert_bottom" parent="base" xyz="0.3157984464801903 -0.002068548615034871 0.5099999434059285" rpy="3.1354753 -1.3045001 0.0024658" meshes="package://gazebo_plugins/test/multi_robot_scenario/meshes/laser" />
-
-  <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro" />
-  <xacro:VLP-16 parent="base" name="laser_horiz" topic="laser_horiz/packets" hz="10" samples="440" gpu="false">
-    <origin xyz="0.2325416305773505 -0.0001380069427607134 1.920122926231907" rpy="-0.0012068 0.114646 -0.0015308" />
-  </xacro:VLP-16>
+  <xacro:laser name="laser_vert_bottom" parent="base" xyz="0.3157984464801903 -0.002068548615034871 0.25" rpy="3.14159 0.0 0.0" meshes="package://gazebo_plugins/test/multi_robot_scenario/meshes/laser" />
 
 </robot>
