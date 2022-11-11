@@ -10,7 +10,7 @@ state = "IDLE"
 
 
 
-pub = rospy.Publisher('turtle1/cmd_vel', Twist, queue_size=1)
+pub = rospy.Publisher('diff/cmd_vel', Twist, queue_size=1)
 
 lidar_sub = None
 wall_ahead = False
