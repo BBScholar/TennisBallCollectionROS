@@ -61,6 +61,8 @@
       <axis xyz="0 0 1" />
       <!-- <dynamics damping="0.8" friction="2.0" /> -->
     </joint>
+    <xacro:wheel_gazebo prefix="${side}" />
+    <xacro:wheel_transmission prefix="${side}" />
   </xacro:macro>
 
   <xacro:wheel side="left_front" reflect_x="-1" reflect_y="1" />
@@ -88,7 +90,8 @@
   </joint>
 
 
-  <xacro:include filename="$(find gazebo_plugins)/test/multi_robot_scenario/xacro/laser/hokuyo.xacro" />
-  <xacro:laser name="laser_vert_bottom" parent="base" xyz="0.3157984464801903 -0.002068548615034871 0.25" rpy="3.14159 0.0 0.0" meshes="package://gazebo_plugins/test/multi_robot_scenario/meshes/laser" />
+  <!-- <xacro:include filename="$(find gazebo_plugins)/test/multi_robot_scenario/xacro/laser/hokuyo.xacro" /> -->
+  <xacro:include filename="$(find tennis-description)/urdf/laser.xacro" />
+  <xacro:laser name="laser_vert_bottom" parent="base" xyz="0.3157984464801903 -0.002068548615034871 0.25" rpy="3.14159 0.0 0.0" meshes="$(find tennis-description)/meshes" />
 
 </robot>

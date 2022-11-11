@@ -1,27 +1,29 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="leo">
 
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>leo</robotNamespace>
+    </plugin>
+  </gazebo>
 
   <gazebo>
     <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
-      <rosDebugLevel>na</rosDebugLevel>
-      <alwaysOn>true</alwaysOn>
       <updateRate>100</updateRate>
-      <leftJoint>wheel_left_joint</leftJoint>
-      <rightJoint>wheel_right_joint</rightJoint>
-      <wheelSeparation>0.50</wheelSeparation>
+      <leftJoint>left_front</leftJoint>
+      <rightJoint>right_front</rightJoint>
+      <wheelSeparation>0.33</wheelSeparation>
       <wheelDiameter>0.3</wheelDiameter>
-      <wheelTorque>100</wheelTorque>
+      <wheelAcceleration>false</wheelAcceleration>
+      <wheelTorque>50</wheelTorque>
       <commandTopic>diff/cmd_vel</commandTopic>
       <odometryTopic>diff/odom</odometryTopic>
       <odometryFrame>odom</odometryFrame>
-      <publishWheelTF>false</publishWheelTF>
+      <robotBaseFrame>base_root</robotBaseFrame>
+      <!-- <odometrySource>1</odometrySource> -->
+      <publishWheelTF>true</publishWheelTF>
       <publishOdomTF>true</publishOdomTF>
-      <robotBaseFrame>base_footprint</robotBaseFrame>
       <publishWheelJointState>true</publishWheelJointState>
-      <wheelAcceleration>false</wheelAcceleration>
-      <odometrySource>world</odometrySource>
-      <publishTf>true</publishTf>
     </plugin>
   </gazebo>
 
