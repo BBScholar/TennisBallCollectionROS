@@ -1,17 +1,12 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="leo">
 
-  <gazebo>
-    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-      <robotNamespace>leo</robotNamespace>
-    </plugin>
-  </gazebo>
 
   <gazebo>
     <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
       <updateRate>100</updateRate>
-      <leftJoint>left_front</leftJoint>
-      <rightJoint>right_front</rightJoint>
+      <leftJoint>left_front_wheel_joint</leftJoint>
+      <rightJoint>right_front_wheel_joint</rightJoint>
       <wheelSeparation>0.33</wheelSeparation>
       <wheelDiameter>0.3</wheelDiameter>
       <wheelAcceleration>false</wheelAcceleration>
@@ -20,8 +15,8 @@
       <odometryTopic>diff/odom</odometryTopic>
       <odometryFrame>odom</odometryFrame>
       <robotBaseFrame>base_root</robotBaseFrame>
-      <!-- <odometrySource>1</odometrySource> -->
-      <publishWheelTF>true</publishWheelTF>
+      <odometrySource>1</odometrySource>
+      <publishWheelTF>false</publishWheelTF>
       <publishOdomTF>true</publishOdomTF>
       <publishWheelJointState>true</publishWheelJointState>
     </plugin>
@@ -60,5 +55,10 @@
     </gazebo>
   </xacro:macro>
 
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>leo</robotNamespace>
+    </plugin>
+  </gazebo>
 
 </robot>

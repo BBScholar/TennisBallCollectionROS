@@ -35,7 +35,7 @@
   </xacro:macro>
 
   <xacro:macro name="wheel" params="side reflect_x reflect_y">
-    <link name="wheel_${side}">
+    <link name="${side}_wheel_link">
       <visual>
         <geometry>
           <cylinder radius="0.15" length="0.05" />
@@ -54,9 +54,9 @@
 
     </link>
 
-    <joint name="base_wheel_${side}_joint" type="continuous">
+    <joint name="${side}_wheel_joint" type="continuous">
       <parent link="base" />
-      <child link="wheel_${side}" />
+      <child link="${side}_wheel_link" />
       <origin xyz="${reflect_x * 0.25} ${reflect_y * 0.25} 0" rpy="1.570796 0 0" />
       <axis xyz="0 0 1" />
       <!-- <dynamics damping="0.8" friction="2.0" /> -->
@@ -77,6 +77,13 @@
     <origin xyz="0.35 -0.1 0" rpy="0 0 0" />
   </joint>
 
+  <link name="odom" />
+  <joint name="odom_joint" type="fixed">
+    <parent link="base" />
+    <child link="odom" />
+    <origin xyz="0 0 0 " rpy="0 0 0" />
+  </joint>
+
   <!-- Create a root link with no inertia to make the solver happy and raise the robot above the floor -->
   <link name="base_root">
     <!-- <origin xyz="${bodyx} ${bodyy} ${bodyz}" rpy="${bodyroll} ${bodypitch} ${bodyyaw}" /> -->
@@ -92,6 +99,6 @@
 
   <!-- <xacro:include filename="$(find gazebo_plugins)/test/multi_robot_scenario/xacro/laser/hokuyo.xacro" /> -->
   <xacro:include filename="$(find tennis-description)/urdf/laser.xacro" />
-  <xacro:laser name="laser_vert_bottom" parent="base" xyz="0.3157984464801903 -0.002068548615034871 0.25" rpy="3.14159 0.0 0.0" meshes="$(find tennis-description)/meshes" />
+  <xacro:laser name="laser_vert_bottom" parent="base" xyz="0.3157984464801903 -0.002068548615034871 0.25" rpy="3.14159 0.0 0.0" meshes="$(find tennis-description)/meshes/laser" />
 
 </robot>
