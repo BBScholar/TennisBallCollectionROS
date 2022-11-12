@@ -58,8 +58,8 @@
     <gazebo reference="${side}_wheel_link">
       <!-- <material>Gazebo/DarkGrey</mate10ial> -->
       <selfCollide>false</selfCollide>
-      <mu value="0.9" />
-      <mu2 value="0.9" />
+      <!-- <mu value="0.9" /> -->
+      <!-- <mu2 value="0.9" /> -->
       <kp value="10000000.0" />
       <kd value="1" />
       <!-- <fdir1 value="1 0 0" /> -->
@@ -76,10 +76,10 @@
     <xacro:wheel_transmission prefix="${side}" />
   </xacro:macro>
 
-  <xacro:wheel side="left_front" reflect_x="-1" reflect_y="1" />
-  <xacro:wheel side="left_back" reflect_x="-1" reflect_y="-1" />
-  <xacro:wheel side="right_front" reflect_x="1" reflect_y="1" />
-  <xacro:wheel side="right_back" reflect_x="1" reflect_y="-1" />
+  <xacro:wheel side="left_front" reflect_x="-1" reflect_y="-1" />
+  <xacro:wheel side="left_back" reflect_x="1" reflect_y="-1" />
+  <xacro:wheel side="right_front" reflect_x="-1" reflect_y="1" />
+  <xacro:wheel side="right_back" reflect_x="1" reflect_y="1" />
 
   <link name="imu_link" />
   <joint name="imu_joint" type="fixed">
