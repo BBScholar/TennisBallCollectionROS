@@ -39,7 +39,7 @@
             <horizontal>
               <!-- The URG-04LX-UG01  has  683 steps with 0.35139 Degree resolution -->
               <samples>720</samples>
-              <resolution>1</resolution>
+              <resolution>0.5</resolution>
               <max_angle>3.14</max_angle> <!-- 120 Degree -->
               <min_angle>-3.14</min_angle> <!-- -120 Degree -->
             </horizontal>
@@ -52,7 +52,7 @@
         </ray>
 
         <plugin name="laser" filename="libgazebo_ros_laser.so">
-          <robotNamespace></robotNamespace>
+          <robotNamespace>/leo</robotNamespace>
           <topicName>${name}/scan</topicName>
           <frameName>${name}</frameName>
         </plugin>

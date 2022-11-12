@@ -2,25 +2,27 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="leo">
 
 
-  <gazebo>
-    <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
-      <updateRate>100</updateRate>
-      <leftJoint>left_front_wheel_joint</leftJoint>
-      <rightJoint>right_front_wheel_joint</rightJoint>
-      <wheelSeparation>0.33</wheelSeparation>
-      <wheelDiameter>0.3</wheelDiameter>
-      <wheelAcceleration>false</wheelAcceleration>
-      <wheelTorque>50</wheelTorque>
-      <commandTopic>diff/cmd_vel</commandTopic>
-      <odometryTopic>diff/odom</odometryTopic>
-      <odometryFrame>odom</odometryFrame>
-      <robotBaseFrame>base_root</robotBaseFrame>
-      <odometrySource>1</odometrySource>
-      <publishWheelTF>false</publishWheelTF>
-      <publishOdomTF>true</publishOdomTF>
-      <publishWheelJointState>true</publishWheelJointState>
-    </plugin>
-  </gazebo>
+  <!-- <gazebo> -->
+  <!--   <plugin name="skid_steer" filename="libgazebo_ros_skid_steer_drive.so"> -->
+  <!--     <updateRate>100</updateRate> -->
+  <!--     <leftFrontJoint>left_front_wheel_joint</leftFrontJoint> -->
+  <!--     <leftRearJoint>left_back_wheel_joint</leftRearJoint> -->
+  <!--     <rightFrontJoint>right_front_wheel_joint</rightFrontJoint> -->
+  <!--     <rightRearJoint>right_back_wheel_joint</rightRearJoint> -->
+  <!--     <wheelSeparation>0.33</wheelSeparation> -->
+  <!--     <wheelDiameter>0.3</wheelDiameter> -->
+  <!--     <wheelAcceleration>false</wheelAcceleration> -->
+  <!--     <torque>100</torque> -->
+  <!--     <commandTopic>diff/cmd_vel</commandTopic> -->
+  <!--     <odometryTopic>diff/odom</odometryTopic> -->
+  <!--     <odometryFrame>odom</odometryFrame> -->
+  <!--     <robotBaseFrame>base_root</robotBaseFrame> -->
+  <!--     <odometrySource>1</odometrySource> -->
+  <!--     <publishWheelTF>false</publishWheelTF> -->
+  <!--     <publishOdomTF>true</publishOdomTF> -->
+  <!--     <publishWheelJointState>true</publishWheelJointState> -->
+  <!--   </plugin> -->
+  <!-- </gazebo> -->
 
   <gazebo reference="base">
     <material>Gazebo/Blue</material>
@@ -34,6 +36,7 @@
       <visualize>false</visualize>
       <topic>imu</topic>
       <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+        <robotNamespace>/leo</robotNamespace>
         <topicName>imu</topicName>
         <bodyName>imu_link</bodyName>
         <updateRateHZ>30.0</updateRateHZ>
@@ -57,7 +60,7 @@
 
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-      <robotNamespace>leo</robotNamespace>
+      <robotNamespace>/leo</robotNamespace>
     </plugin>
   </gazebo>
 
