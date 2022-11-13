@@ -4,7 +4,7 @@
 
   <xacro:property name="camera_geometry">
     <geometry>
-      <box size="0.01 0.04 0.02" />
+      <box size="0.02 0.08 0.04" />
     </geometry>
   </xacro:property>
 
