@@ -3,6 +3,8 @@
 
   <xacro:include filename="$(find tennis-description)/urdf/leo.gazebo.xacro" />
   <xacro:include filename="$(find tennis-description)/urdf/transmission.xacro" />
+  <xacro:include filename="$(find tennis-description)/urdf/camera.xacro" />
+  <xacro:include filename="$(find tennis-description)/urdf/rplidar.xacro" />
 
   <xacro:property name="robotlxx" value="0.385" />
   <xacro:property name="robotlxy" value="0" />
@@ -55,16 +57,6 @@
 
     </link>
 
-    <gazebo reference="${side}_wheel_link">
-      <!-- <material>Gazebo/DarkGrey</mate10ial> -->
-      <selfCollide>false</selfCollide>
-      <!-- <mu value="0.9" /> -->
-      <!-- <mu2 value="0.9" /> -->
-      <kp value="10000000.0" />
-      <kd value="1" />
-      <!-- <fdir1 value="1 0 0" /> -->
-    </gazebo>
-
     <joint name="${side}_wheel_joint" type="continuous">
       <parent link="base" />
       <child link="${side}_wheel_link" />
@@ -85,7 +77,7 @@
   <joint name="imu_joint" type="fixed">
     <parent link="base" />
     <child link="imu_link" />
-    <origin xyz="0.35 -0.1 0" rpy="0 0 0" />
+    <origin xyz="0.0 0.0 0" rpy="0 0 0" />
   </joint>
 
   <link name="odom" />
@@ -100,7 +92,7 @@
     <!-- <origin xyz="${bodyx} ${bodyy} ${bodyz}" rpy="${bodyroll} ${bodypitch} ${bodyyaw}" /> -->
   </link>
 
-  <!-- Connect that link to the base link in the middle of the robot -->
+  <!-- Connect that link to the base link in middle of the robot -->
   <joint name="base_root_joint" type="fixed">
     <origin xyz="0 0 0.15" rpy="0 0 0" />
     <parent link="base_root" />
@@ -108,8 +100,17 @@
   </joint>
 
 
+  <!-- camera definitions -->
+  <xacro:camera name="front_camera" parent="base" xyz="0.5 0 0.2" rpy="0 0 0" />
+  <xacro:camera name="rear_camera" parent="base" xyz="-0.5 0 0.2" rpy="0 0 ${pi}" />
+
+  <!-- lidar definition -->
+  <xacro:rplidar name="lidar" parent="base" xyz="0 0 0.25" rpy="0 0 0" />
+
+
+  <!-- old lidar stuff -->
   <!-- <xacro:include filename="$(find gazebo_plugins)/test/multi_robot_scenario/xacro/laser/hokuyo.xacro" /> -->
-  <xacro:include filename="$(find tennis-description)/urdf/laser.xacro" />
-  <xacro:laser name="laser_vert_bottom" parent="base" xyz="0.3157984464801903 -0.002068548615034871 0.25" rpy="3.14159 0.0 0.0" meshes="$(find tennis-description)/meshes/laser" />
+  <!-- <xacro:include filename="$(find tennis-description)/urdf/laser.xacro" /> -->
+  <!-- <xacro:laser name="lidar" parent="base" xyz="0.3157984464801903 -0.002068548615034871 0.25" rpy="3.14159 0.0 0.0" meshes="$(find tennis-description)/meshes/laser" /> -->
 
 </robot>

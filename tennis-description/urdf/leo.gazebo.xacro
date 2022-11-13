@@ -33,7 +33,7 @@
     <sensor name="imu_sensor" type="imu">
       <always_on>true</always_on>
       <update_rate>30</update_rate>
-      <visualize>false</visualize>
+      <visualize>true</visualize>
       <topic>imu</topic>
       <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
         <robotNamespace>/leo</robotNamespace>
@@ -52,9 +52,12 @@
 
   <xacro:macro name="wheel_gazebo" params="prefix">
     <gazebo reference="${prefix}_wheel_link">
-      <material>Gazebo/Grey</material>
-      <mu1 value="0.6" />
-      <mu2 value="0.6" />
+      <material>Gazebo/DarkGrey</material>
+      <mu1 value="0.9" />
+      <mu2 value="0.9" />
+      <selfCollide>false</selfCollide>
+      <!-- <kp value="10000000.0" /> -->
+      <!-- <kd value="1" /> -->
     </gazebo>
   </xacro:macro>
 
