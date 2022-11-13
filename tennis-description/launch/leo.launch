@@ -2,7 +2,7 @@
 
 <launch>
   <arg name="gui" default="true" />
-  <arg name="rviz" default="false" />
+  <arg name="rviz" default="true" />
   <arg name="use_steering" default="true" />
   <arg name="model" default="$(find tennis-description)/urdf/leo.xacro" />
   <arg name="world" default="basic.xml" />
@@ -10,7 +10,7 @@
 
   <rosparam command="load" file="$(find tennis-description)/config/controllers.yaml" />
 
-  <node if="$(arg rviz)" pkg="rviz" name="rviz" type="rviz" args="" />
+  <node if="$(arg rviz)" pkg="rviz" name="rviz" type="rviz" args="-d $(find tennis-description)/rviz/leo.rviz" />
 
   <include file="$(find tennis-description)/launch/gazebo.launch">
     <arg name="gui" value="$(arg gui)" />
