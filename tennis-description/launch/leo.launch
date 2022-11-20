@@ -19,7 +19,7 @@
     <arg name="verbose" value="$(arg verbose)" />
   </include>
 
-  <node name="controller_manager" pkg="controller_manager" type="spawner" output="screen" args="diff_drive joint_state_publisher --namespace leo" />
+  <!-- <node name="controller_manager" pkg="controller_manager" type="spawner" output="screen" args="diff_drive joint_state_publisher namespace leo" /> -->
 
   <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering" if="$(arg use_steering)">
     <param name="default_topic" value="/leo/diff_drive/cmd_vel" />

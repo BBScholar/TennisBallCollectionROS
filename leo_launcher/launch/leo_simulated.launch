@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <!-- include base functionality -->
+  <include file="$(find leo_launcher)/launch/leo_base.launch" />
+
+  <!-- include sim specific functionality -->
+  <include file="$(find tennis-description)/launch/leo.launch"></include>
+
+</launch>

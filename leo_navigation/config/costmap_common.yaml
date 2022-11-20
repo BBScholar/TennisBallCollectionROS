@@ -1,0 +1,11 @@
+#might need to be set lower for real life
+obstacle_range: 11.0
+raytrace_range: 12.0
+
+# need to check the order of these!!!!
+footprint: [[0.5, 0.167], [0.5, -0.167], [-0.5, -0.167], [-0.5, 0.167]]
+inflation_radius: 0.2 # paths will be 0.2 meters away from obstacles
+
+observation_sources: lidar_scan_sensor
+
+lidar_scan_sensor: {sensor_frame: "lidar_link", data_type: LaserScan, topic: "lidar/scan", marking: true, clearing: true}

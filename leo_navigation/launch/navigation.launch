@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <node name="odom_broadcaster" pkg="leo_navigation" type="odom_pub_node" />
+  <node name="go_to" pkg="leo_navigation" type="go_to_node" />
+
+  <node name="gmapping" pkg="gmapping" type="slam_gmapping" respawn="false" output="log" ns="leo">
+    <rosparam file="$(find leo_navigation)/config/gmapping.yaml" command="load" />
+    <remap from="scan" to="lidar/scan" />
+  </node>
+
+
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen" ns="leo">
+    <rosparam file="$(find leo_navigation)/config/move_base.yaml" command="load" />
+    <rosparam file="$(find leo_navigation)/config/costmap_common.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find leo_navigation)/config/costmap_common.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find leo_navigation)/config/local_costmap.yaml" command="load" />
+    <rosparam file="$(find leo_navigation)/config/global_costmap.yaml" command="load" />
+    <rosparam file="$(find leo_navigation)/config/base_local_planner.yaml" command="load" />
+
+    <remap from="odom" to="diff_drive/odom" />
+    <remap from="cmd_vel" to="diff_drive/cmd_vel" />
+  </node>
+
+</launch>

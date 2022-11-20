@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<launch>
+  <rosparam command="load" file="$(find leo_control)/config/controllers.yaml" />
+
+  <node name="controller_manager" pkg="controller_manager" type="spawner" output="screen" args="diff_drive joint_state_publisher --namespace leo" />
+
+</launch>
