@@ -11,7 +11,7 @@ footprint_padding: 0.05
 
 inflation_radius: 0.2 # paths will be 0.2 meters away from obstacles
 cost_scaling_factor: 100
-track_unknown_space: true
+track_unknown_space: false 
 
 observation_sources: lidar_scan_sensor
 # lidar_scan_sensor: {sensor_frame: "lidar", data_type: LaserScan, topic: "lidar/scan", marking: true, clearing: true}
