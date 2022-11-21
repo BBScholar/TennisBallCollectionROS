@@ -1,5 +1,5 @@
 TrajectoryPlannerROS:
-  controller_frequency: 10.0
+  controller_frequency: 5.0
   global_frame_id: odom
   
   sim_granularity: 0.005 # half a centimeter steps
