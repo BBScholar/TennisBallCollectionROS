@@ -11,6 +11,7 @@ Panels:
         - /RobotModel1
         - /Map1
         - /Path1
+        - /Odometry1
       Splitter Ratio: 0.5
     Tree Height: 331
   - Class: rviz/Selection
@@ -71,6 +72,7 @@ Visualization Manager:
         Grid: true
         LaserScan: true
         Map: true
+        Odometry: true
         Path: true
         Polygon: true
         RobotModel: true
@@ -91,6 +93,7 @@ Visualization Manager:
         Grid: true
         LaserScan: true
         Map: true
+        Odometry: true
         Path: true
         Polygon: true
         RobotModel: true
@@ -241,6 +244,41 @@ Visualization Manager:
       Unreliable: false
       Use Timestamp: false
       Value: true
+    - Angle Tolerance: 0.10000000149011612
+      Class: rviz/Odometry
+      Covariance:
+        Orientation:
+          Alpha: 0.5
+          Color: 255; 255; 127
+          Color Style: Unique
+          Frame: Local
+          Offset: 1
+          Scale: 1
+          Value: true
+        Position:
+          Alpha: 0.30000001192092896
+          Color: 204; 51; 204
+          Scale: 1
+          Value: true
+        Value: true
+      Enabled: true
+      Keep: 1
+      Name: Odometry
+      Position Tolerance: 0.10000000149011612
+      Queue Size: 10
+      Shape:
+        Alpha: 1
+        Axes Length: 1
+        Axes Radius: 0.10000000149011612
+        Color: 255; 25; 0
+        Head Length: 0.30000001192092896
+        Head Radius: 0.10000000149011612
+        Shaft Length: 1
+        Shaft Radius: 0.05000000074505806
+        Value: Arrow
+      Topic: /leo/odometry/filtered
+      Unreliable: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -269,7 +307,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 4.556161880493164
+      Distance: 6.196380138397217
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1

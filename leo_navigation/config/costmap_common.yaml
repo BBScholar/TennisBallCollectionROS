@@ -15,4 +15,4 @@ track_unknown_space: true
 
 observation_sources: lidar_scan_sensor
 # lidar_scan_sensor: {sensor_frame: "lidar", data_type: LaserScan, topic: "lidar/scan", marking: true, clearing: true}
-lidar_scan_sensor: {data_type: LaserScan, topic: "lidar/scan", marking: true, clearing: true}
+lidar_scan_sensor: {data_type: LaserScan, topic: "lidar/scan", marking: true, clearing: true, inf_is_valid: true}

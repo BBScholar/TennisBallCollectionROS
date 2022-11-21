@@ -7,7 +7,7 @@
 
   <!-- include sim specific functionality -->
   <include file="$(find tennis-description)/launch/leo.launch">
-    <arg name="use_steering" value="true" />
+    <arg name="use_steering" value="false" />
   </include>
 
 </launch>
