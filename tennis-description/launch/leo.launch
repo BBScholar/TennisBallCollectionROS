@@ -8,8 +8,6 @@
   <arg name="world" default="basic.xml" />
   <arg name="verbose" default="false" />
 
-  <rosparam command="load" file="$(find tennis-description)/config/controllers.yaml" />
-
   <node if="$(arg rviz)" pkg="rviz" name="rviz" type="rviz" args="-d $(find tennis-description)/rviz/leo.rviz" />
 
   <include file="$(find tennis-description)/launch/gazebo.launch">
@@ -18,8 +16,6 @@
     <arg name="world_name" value="$(find tennis-description)/worlds/$(arg world)" />
     <arg name="verbose" value="$(arg verbose)" />
   </include>
-
-  <!-- <node name="controller_manager" pkg="controller_manager" type="spawner" output="screen" args="diff_drive joint_state_publisher namespace leo" /> -->
 
   <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering" if="$(arg use_steering)">
     <param name="default_topic" value="/leo/diff_drive/cmd_vel" />

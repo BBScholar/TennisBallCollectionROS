@@ -2,8 +2,8 @@
 
 <launch>
 
-  <node name="odom_broadcaster" pkg="leo_navigation" type="odom_pub_node" />
-  <node name="go_to" pkg="leo_navigation" type="go_to_node" />
+  <!-- <node name="odom_broadcaster" pkg="leo_navigation" type="odom_pub_node" /> -->
+  <!-- <node name="go_to" pkg="leo_navigation" type="go_to_node" /> -->
 
   <node name="gmapping" pkg="gmapping" type="slam_gmapping" respawn="false" output="log" ns="leo">
     <rosparam file="$(find leo_navigation)/config/gmapping.yaml" command="load" />
@@ -19,7 +19,7 @@
     <rosparam file="$(find leo_navigation)/config/global_costmap.yaml" command="load" />
     <rosparam file="$(find leo_navigation)/config/base_local_planner.yaml" command="load" />
 
-    <remap from="odom" to="diff_drive/odom" />
+    <remap from="odom" to="odometry/filtered" />
     <remap from="cmd_vel" to="diff_drive/cmd_vel" />
   </node>
 

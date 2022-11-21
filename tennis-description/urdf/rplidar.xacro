@@ -7,6 +7,7 @@
   <xacro:property name="rplidar_mass" value="0.190" />
 
   <xacro:property name="rplidar_geometry">
+    <origin xyz="0 0 0" rpy="0 0 0 " />
     <geometry>
       <cylinder radius="${rplidar_r}" length="${rplidar_h}" />
     </geometry>
@@ -22,12 +23,14 @@
         <xacro:insert_block name="rplidar_geometry" />
       </collision>
       <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
         <xacro:cylinder_inertia m="${rplidar_mass}" r="${rplidar_r}" h="${rplidar_h}" />
         <mass value="${rplidar_mass}" />
       </inertial>
     </link>
 
     <joint name="${name}_joint" type="fixed">
+      <!-- <axis xyz="0 0 1" /> -->
       <origin xyz="${xyz}" rpy="${rpy}" />
       <parent link="${parent}" />
       <child link="${name}_link" />
@@ -38,6 +41,7 @@
         <pose>0 0 0 0 0 0</pose>
         <visualize>false</visualize>
         <update_rate>10</update_rate>
+        <always_on>true</always_on>
         <ray>
           <scan>
             <horizontal>

@@ -5,4 +5,10 @@
 
   <node name="controller_manager" pkg="controller_manager" type="spawner" output="screen" args="diff_drive joint_state_publisher --namespace leo" />
 
+  <node name="odom_ekf" pkg="robot_localization" type="ekf_localization_node" ns="leo">
+    <rosparam command="load" file="$(find leo_control)/config/ekf.yaml" />
+
+    <!-- <remap -->
+  </node>
+
 </launch>

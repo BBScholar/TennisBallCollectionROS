@@ -6,6 +6,8 @@
   <include file="$(find leo_launcher)/launch/leo_base.launch" />
 
   <!-- include sim specific functionality -->
-  <include file="$(find tennis-description)/launch/leo.launch"></include>
+  <include file="$(find tennis-description)/launch/leo.launch">
+    <arg name="use_steering" value="true" />
+  </include>
 
 </launch>

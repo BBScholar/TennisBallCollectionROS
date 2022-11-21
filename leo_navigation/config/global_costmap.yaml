@@ -1,9 +1,16 @@
 global_costmap:
   global_frame: map
   robot_base_frame: base_root 
-  update_frequency: 10
-  static_map: false
-  rolling_window: true
+  update_frequency: 5
+  publish_frequency: 0
+
+  static_map: true 
+  rolling_window: false 
+
+  map_topic: "map"
+  first_map_only: false 
+  subscribe_to_updates: true 
+  track_unknown_space: true
   
   width: 30.0
   height: 30.0

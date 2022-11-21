@@ -1,4 +1,18 @@
 TrajectoryPlannerROS:
+  controller_frequency: 10.0
+  global_frame_id: odom
+  
+  sim_granularity: 0.005 # half a centimeter steps
+  angular_sim_granularity: 0.005 # radians
+
+  yaw_goal_tolerance: 0.05 # radians
+  xy_goal_tolerance: 0.02 # two centimeters
+  latch_xy_goal_tolerance: false
+
+  oscillation_reset_dist: 0.05 # 5 centimeters 
+
+  holonomic_robot: false
+
   max_vel_x: 1.0
   min_vel_x: 0.05
   max_vel_theta: 2.0 # rad/s 
@@ -7,4 +21,17 @@ TrajectoryPlannerROS:
   acc_lim_theta: 5.0 
   acc_lim_x: 3.0 
 
-  holonomic_robot: false
+  # http://wiki.ros.org/base_local_planner
+  meter_scoring: true
+  path_distance_bias: 0.6
+  goal_distance_bias: 0.8
+  occdist_scale: 0.01
+  heading_lookahead: 0.325
+  heading_scoring: false
+  # heading_scoring_timestep: 0.8 # not used RN 
+  dwa: true # dynamic window approach
+
+  publish_cost_grid_pc: false 
+
+  prune_plan: true
+

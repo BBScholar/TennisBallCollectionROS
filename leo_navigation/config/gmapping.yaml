@@ -8,10 +8,10 @@ maxUrange: 11.0 # where to crop laser rays
 linearUpdate: 0.5
 temporalUpdate: -1.0
 particles: 50 # default 30
-xmin: -100.0
-xmax: 100.0
-ymin: -100.0
-ymax: 100.0
+xmin: -50.0
+xmax: 50.0
+ymin: -50.0
+ymax: 50.0
 delta: 0.05 # resolution of map 
 transform_publish_period: 0.05 # when to update tf, 20 hz
 maxRange: 12.0

@@ -24,8 +24,8 @@ int main(int argc, char **argv) {
   goal.target_pose.header.frame_id = "map";
   goal.target_pose.header.stamp = ros::Time::now();
 
-  goal.target_pose.pose.position.x = -5.0;
-  goal.target_pose.pose.position.y = -5.0;
+  goal.target_pose.pose.position.x = 5.0;
+  goal.target_pose.pose.position.y = 5.0;
   goal.target_pose.pose.orientation.w = 1.0;
 
   client.sendGoal(goal);
