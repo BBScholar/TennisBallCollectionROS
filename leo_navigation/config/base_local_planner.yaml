@@ -5,18 +5,21 @@ TrajectoryPlannerROS:
   sim_granularity: 0.005 # half a centimeter steps
   angular_sim_granularity: 0.005 # radians
 
-  yaw_goal_tolerance: 0.05 # radians
-  xy_goal_tolerance: 0.02 # two centimeters
+  yaw_goal_tolerance: 0.1 # radians
+  xy_goal_tolerance: 0.10 # two centimeters
   latch_xy_goal_tolerance: false
 
-  oscillation_reset_dist: 0.05 # 5 centimeters 
+  oscillation_reset_dist: 0.10 # 5 centimeters 
 
   holonomic_robot: false
 
-  max_vel_x: 1.0
-  min_vel_x: 0.05
+  max_vel_x: 1.5
+  min_vel_x: 0.1
   max_vel_theta: 2.0 # rad/s 
   min_vel_theta: 0.2 
+  min_in_place_vel_theta: 0.4
+
+  escape_vel: -0.2
 
   acc_lim_theta: 5.0 
   acc_lim_x: 3.0 
@@ -24,7 +27,7 @@ TrajectoryPlannerROS:
   # http://wiki.ros.org/base_local_planner
   meter_scoring: true
   path_distance_bias: 0.6
-  goal_distance_bias: 0.8
+  goal_distance_bias: 3.0
   occdist_scale: 0.01
   heading_lookahead: 0.325
   heading_scoring: false

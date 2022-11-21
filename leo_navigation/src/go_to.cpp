@@ -11,13 +11,13 @@ int main(int argc, char **argv) {
 
   ros::NodeHandle nh;
 
-  ros::Duration d(10.0);
+  // ros::Duration d(10.0);
 
   Client client("/leo/move_base", true);
 
   client.waitForServer();
 
-  d.sleep();
+  // d.sleep();
 
   move_base_msgs::MoveBaseGoal goal;
 

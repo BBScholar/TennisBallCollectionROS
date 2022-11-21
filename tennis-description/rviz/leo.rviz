@@ -167,10 +167,6 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        odom:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
         rear_camera_link:
           Alpha: 1
           Show Axes: false
@@ -234,6 +230,16 @@ Visualization Manager:
       Queue Size: 10
       Topic: /leo/move_base/global_costmap/footprint
       Unreliable: false
+      Value: true
+    - Alpha: 0.699999988079071
+      Class: rviz/Map
+      Color Scheme: map
+      Draw Behind: false
+      Enabled: true
+      Name: Map
+      Topic: /leo/move_base/local_costmap/costmap
+      Unreliable: false
+      Use Timestamp: false
       Value: true
   Enabled: true
   Global Options:
