@@ -40,7 +40,7 @@
       <!--   <collision>leo/base_root_fixed_joint_lump__vacuum_link_collision_collision_4</collision> -->
       <!-- </contact> -->
       <contact>
-        <collision name="bump_sensor_collision_collision"></collision>
+        <collision>base_root_fixed_joint_lump__vacuum_link_collision_4</collision>
       </contact>
 
       <plugin name="gazebo_ros_bumper_controller" filename="libgazebo_ros_bumper.so">
