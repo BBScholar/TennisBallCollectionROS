@@ -2,28 +2,6 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="leo">
 
 
-  <!-- <gazebo> -->
-  <!--   <plugin name="skid_steer" filename="libgazebo_ros_skid_steer_drive.so"> -->
-  <!--     <updateRate>100</updateRate> -->
-  <!--     <leftFrontJoint>left_front_wheel_joint</leftFrontJoint> -->
-  <!--     <leftRearJoint>left_back_wheel_joint</leftRearJoint> -->
-  <!--     <rightFrontJoint>right_front_wheel_joint</rightFrontJoint> -->
-  <!--     <rightRearJoint>right_back_wheel_joint</rightRearJoint> -->
-  <!--     <wheelSeparation>0.33</wheelSeparation> -->
-  <!--     <wheelDiameter>0.3</wheelDiameter> -->
-  <!--     <wheelAcceleration>false</wheelAcceleration> -->
-  <!--     <torque>100</torque> -->
-  <!--     <commandTopic>diff/cmd_vel</commandTopic> -->
-  <!--     <odometryTopic>diff/odom</odometryTopic> -->
-  <!--     <odometryFrame>odom</odometryFrame> -->
-  <!--     <robotBaseFrame>base_root</robotBaseFrame> -->
-  <!--     <odometrySource>1</odometrySource> -->
-  <!--     <publishWheelTF>false</publishWheelTF> -->
-  <!--     <publishOdomTF>true</publishOdomTF> -->
-  <!--     <publishWheelJointState>true</publishWheelJointState> -->
-  <!--   </plugin> -->
-  <!-- </gazebo> -->
-
   <gazebo reference="base">
     <material>Gazebo/Blue</material>
   </gazebo>
@@ -49,6 +27,32 @@
       <pose>0 0 0 0 0 0</pose>
     </sensor>
   </gazebo>
+
+  <gazebo reference="vacuum_link">
+    <material>Gazebo/Red</material>
+    <sensor name="vacuum_bumper" type="contact">
+      <selfCollide>false</selfCollide>
+      <alwaysOn>true</alwaysOn>
+      <updateRate>20.0</updateRate>
+
+      <!-- <contact> -->
+      <!-- find with gz sdf -p leo.xacro -->
+      <!--   <collision>leo/base_root_fixed_joint_lump__vacuum_link_collision_collision_4</collision> -->
+      <!-- </contact> -->
+      <contact>
+        <collision name="bump_sensor_collision_collision"></collision>
+      </contact>
+
+      <plugin name="gazebo_ros_bumper_controller" filename="libgazebo_ros_bumper.so">
+        <robotNamespace>leo</robotNamespace>
+        <bumperTopicName>vacuum_contacts</bumperTopicName>
+        <frameName>world</frameName>
+        <alwaysOn>true</alwaysOn>
+        <updateRate>20.0</updateRate>
+      </plugin>
+    </sensor>
+  </gazebo>
+
 
   <xacro:macro name="wheel_gazebo" params="prefix">
     <gazebo reference="${prefix}_wheel_link">

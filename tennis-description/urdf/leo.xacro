@@ -83,12 +83,23 @@
     <origin xyz="0.0 0.0 0" rpy="0 0 0" />
   </joint>
 
-  <!-- <link name="odom" /> -->
-  <!-- <joint name="odom_joint" type="fixed"> -->
-  <!--   <parent link="odom" /> -->
-  <!--   <child link="base_root" /> -->
-  <!--   <origin xyz="0 0 0 " rpy="0 0 0" /> -->
-  <!-- </joint> -->
+  <link name="vacuum_link">
+    <visual>
+      <geometry>
+        <box size="0.01 0.33 0.1" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.01 0.33 0.1" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="vacuum_joint" type="fixed">
+    <origin xyz="0.52 0 -0.10" />
+    <parent link="base" />
+    <child link="vacuum_link" />
+  </joint>
 
   <!-- Create a root link with no inertia to make the solver happy and raise the robot above the floor -->
   <link name="base_root">

@@ -11,7 +11,7 @@
   </node>
 
 
-  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen" ns="leo">
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="log" ns="leo">
     <rosparam file="$(find leo_navigation)/config/move_base.yaml" command="load" />
     <rosparam file="$(find leo_navigation)/config/costmap_common.yaml" command="load" ns="global_costmap" />
     <rosparam file="$(find leo_navigation)/config/costmap_common.yaml" command="load" ns="local_costmap" />
