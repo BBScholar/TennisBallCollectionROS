@@ -10,4 +10,6 @@
     <arg name="use_steering" value="false" />
   </include>
 
+  <node name="vacuum_sim_node" pkg="leo_sim" type="sim_vacuum.py" ns="leo"></node>
+
 </launch>

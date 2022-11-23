@@ -12,16 +12,20 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   tennis-description
   geometry_msgs
+  actionlib
+  genmsg
+  actionlib_msgs
+  message_generation
 )
 
-## System dependencies are found with CMake's conventions
-# find_package(Boost REQUIRED COMPONENTS system)
+add_service_files(DIRECTORY srv FILES SpawnBalls.srv)
 
+add_action_files(DIRECTORY action FILES Dump.action)
 
-## Uncomment this if the package has a setup.py. This macro ensures
-## modules and global scripts declared therein get installed
-## See http://ros.org/doc/api/catkin/html/user_guide/setup_dot_py.html
-# catkin_python_setup()
+generate_messages(DEPENDENCIES 
+  actionlib_msgs 
+  std_msgs
+)
 
 
 
@@ -113,6 +117,8 @@ include_directories(
 ## in contrast to setup.py, you can choose the destination
 catkin_install_python(PROGRAMS
   src/spawn_balls.py
+  src/sim_vacuum.py
+  src/spawn_balls_service.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
