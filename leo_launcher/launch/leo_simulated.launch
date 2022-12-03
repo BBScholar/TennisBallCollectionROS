@@ -10,6 +10,14 @@
     <arg name="use_steering" value="false" />
   </include>
 
-  <node name="vacuum_sim_node" pkg="leo_sim" type="sim_vacuum.py" ns="leo"></node>
+  <node name="throttle" pkg="topic_tools" type="throttle" args="messages /gazebo/model_states 30.0 /gazebo/model_states_throttled" />
+
+  <node name="vacuum_sim_node" pkg="leo_sim" type="sim_vacuum.py" ns="leo" output="screen" />
+  <node name="seeker_sim_node" pkg="leo_sim" type="sim_seeker.py" ns="leo" output="screen" />
+
+  <!-- <node name="spawn_balls_node" pkg="leo_sim" type="spawn_balls_service.py"> -->
+
+  <include file="$(find leo_sim)/launch/spawn_balls.launch"></include>
+
 
 </launch>

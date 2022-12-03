@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import rospy 
 
@@ -26,6 +26,11 @@ class BallSpawner():
         rospy.wait_for_service("/gazebo/spawn_sdf_model")
         self.client = rospy.ServiceProxy("/gazebo/spawn_sdf_model", SpawnModel)
         self.model_path = ""
+        
+        rospy.loginfo("Waiting for model_path")
+        while not rospy.is_shutdown() and not rospy.has_param("~model_path"):
+            rospy.sleep(0.1)
+
         if rospy.has_param("~model_path"):
             self.model_path = rospy.get_param("~model_path")
         else:

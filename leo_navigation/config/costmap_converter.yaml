@@ -1,0 +1,4 @@
+
+costmap_topic: map
+costmap_update_topic: map_updates
+odom_topic: odometry/filtered

@@ -4,7 +4,7 @@
 
   <arg name="n" value="20" />
 
-  <node name="spawn_balls" pkg="leo_sim" type="spawn_balls.py" args="20" output="screen">
+  <node name="spawn_balls" pkg="leo_sim" type="spawn_balls_service.py" output="screen">
     <param name="model_path" value="$(find tennis-description)/models/tennis_ball/model.sdf" />
   </node>
 

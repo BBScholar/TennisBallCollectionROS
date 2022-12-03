@@ -1,0 +1,7 @@
+geometry_msgs/PoseStamped estimated_pose
+float64 tolerance
+---
+bool success 
+string message
+geometry_msgs/PoseStamped removed_pose
+float64 distance 

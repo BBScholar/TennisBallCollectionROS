@@ -5,4 +5,6 @@
   <include file="$(find leo_navigation)/launch/navigation.launch" />
   <include file="$(find leo_control)/launch/controllers.launch" />
 
+  <node name="ball_location_node" pkg="leo_sim" type="ball_location.py" ns="leo" />
+
 </launch>

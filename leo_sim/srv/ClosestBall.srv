@@ -1,0 +1,7 @@
+geometry_msgs/PoseStamped current_pose
+float64 max_distance
+---
+bool success
+string message
+geometry_msgs/PoseStamped ball_pose
+float64 distance

@@ -10,6 +10,13 @@
     <remap from="scan" to="lidar/scan" />
   </node>
 
+  <!-- <node name="explore" pkg="explore_lite" type="explore" ns="leo"> -->
+  <!--   <rosparam file="$(find leo_navigation)/config/explore.yaml" command="load" /> -->
+  <!-- </node> -->
+
+  <!-- <node name="costmap_converter" pkg="costmap_converter" type="costmap_converter_node"> -->
+  <!--   <rosparam file="$(find leo_navigation)/config/costmap_converter.yaml" command="load" /> -->
+  <!-- </node> -->
 
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="log" ns="leo">
     <rosparam file="$(find leo_navigation)/config/move_base.yaml" command="load" />
