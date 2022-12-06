@@ -1,0 +1,7 @@
+
+
+<launch>
+
+  <node name="collect_node" pkg="leo_autonomy" type="collect.py" ns="leo" output="screen" />
+
+</launch>

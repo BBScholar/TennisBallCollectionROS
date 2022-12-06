@@ -11,11 +11,11 @@ import random, sys
 class BallSpawner():
 
     def __init__(self):
-        self.min_x = 0.02
-        self.max_x = 19.8
+        self.min_x = 2.0
+        self.max_x = 18.0
 
-        self.min_y = 0.02
-        self.max_y = 35.8
+        self.min_y = 19.0
+        self.max_y = 34.0
 
         self.z = 0.05
 

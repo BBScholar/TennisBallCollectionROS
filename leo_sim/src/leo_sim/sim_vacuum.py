@@ -61,6 +61,7 @@ class SimVacuum():
 
 
     def handle_set_state(self, req):
+        rospy.loginfo(f"Recieving vacuum request with data: {req.data}")
         if not req.data:
             self.vacuum_on = False 
             return SetBoolResponse(True, "")
@@ -102,7 +103,7 @@ class SimVacuum():
     def send_msgs(self):
         self.state_pub.publish(self.vacuum_on)
         self.num_balls_pub.publish(self.num_balls)
-        self.bucket_full_pub.publish(self.num_balls == self.max_balls)
+        self.bucket_full_pub.publish(self.num_balls >= self.max_balls)
 
 def main():
     rospy.init_node("sim_vacuum")

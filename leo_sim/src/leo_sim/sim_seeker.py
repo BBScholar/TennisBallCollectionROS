@@ -16,15 +16,15 @@ from tf2_ros import Buffer, TransformListener
 class SimSeeker:
 
     def __init__(self) -> None:
-        self.x_min = -3.0
-        self.x_max = 3.0
-        self.y_min = -3.0
-        self.y_max = 3.0
+        self.x_min = 0.3
+        self.x_max = 4.0
+        self.y_min = -4.0
+        self.y_max = 4.0
         
         self.world_frame = "map" #TODO: need to check what this actually is
         self.base_link_frame = "base_root"
 
-        self.model_state_sub = rospy.Subscriber("/gazebo/model_states_throttled", ModelStates, self.model_state_cb, queue_size=32)
+        self.model_state_sub = rospy.Subscriber("/gazebo/model_states_throttled", ModelStates, self.model_state_cb, queue_size=4)
         self.link_state_sub = rospy.Subscriber("/gazebo/link_states", LinkStates, self.link_state_cb, queue_size=32)
 
         self.model_state_client = rospy.ServiceProxy("/gazebo/get_model_state", GetModelState)

@@ -1,4 +1,4 @@
-#!/usr/bin/env python 
+#!/usr/bin/env python3
 
 import roslib 
 roslib.load_manifest("leo_autonomy")
@@ -14,9 +14,6 @@ class IdleState(State):
 
     def execute(self, userdata):
         pass
-
-class TeleopState(State):
-    pass
 
 class MappingState(State):
     pass 
