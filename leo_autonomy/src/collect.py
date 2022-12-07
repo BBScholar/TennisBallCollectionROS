@@ -250,7 +250,6 @@ class CollectNode:
 
         vacuum_pose = tf2_geometry_msgs.do_transform_pose(pose_stamped, base_vacuum_t)
 
-
         x = pose.position.x
         y = pose.position.y
 
@@ -379,6 +378,7 @@ class CollectNode:
             dump_goal.goal_id.stamp = rospy.Time.now()
             self.dumper_as.send_goal_and_wait(dump_goal.goal)
             rospy.loginfo("Dumping done")
+            rospy.loginfo(f"Collected {self.total_balls_collected} in total")
             rospy.sleep(2.0)
 
 def main():

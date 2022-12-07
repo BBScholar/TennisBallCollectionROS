@@ -7,7 +7,7 @@ transform_tolerance: 0.3
 
 # need to check the order of these!!!!
 footprint: [[0.55, 0.25], [0.55, -0.25], [-0.55, -0.25], [-0.55, 0.25]]
-footprint_padding: 0.5
+footprint_padding: 0.4
 
 inflation_radius: 0.3 # paths will be 0.2 meters away from obstacles
 cost_scaling_factor: 100

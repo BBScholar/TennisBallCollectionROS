@@ -14,7 +14,7 @@ class BallSpawner():
         self.min_x = 2.0
         self.max_x = 18.0
 
-        self.min_y = 19.0
+        self.min_y = 22.0
         self.max_y = 34.0
 
         self.z = 0.05

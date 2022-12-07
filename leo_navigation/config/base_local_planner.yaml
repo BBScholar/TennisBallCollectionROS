@@ -5,7 +5,7 @@ TrajectoryPlannerROS:
   sim_granularity: 0.005 # half a centimeter steps
   angular_sim_granularity: 0.005 # radians
 
-  yaw_goal_tolerance: 0.30 # radians -- roughly 10 degrees for now
+  yaw_goal_tolerance: 0.09 # radians -- roughly 10 degrees for now
   xy_goal_tolerance: 0.20 # twenty centimeters
   latch_xy_goal_tolerance: true 
 
@@ -19,7 +19,7 @@ TrajectoryPlannerROS:
   min_vel_theta: -3.0
   min_in_place_vel_theta: 1.0
 
-  escape_vel: -0.2
+  escape_vel: -0.3
 
   acc_lim_theta: 4.0
   acc_lim_x: 3.0 

@@ -16,19 +16,21 @@ from std_msgs.msg import Int32, Bool
 # from leo_sim.msg import DumpAction
 from leo_sim.msg import DumpAction, DumpActionGoal
 
-class SimDumpServer:
-    def __init__(self):
-        self.server = actionlib.SimpleActionServer("vacuum/dump", DumpAction, self.execute, False)
+# class SimDumpServer:
+#     def __init__(self):
+#         self.server = actionlib.SimpleActionServer("vacuum/dump", DumpAction, self.execute, False)
+#         # self.num_balls = 0
 
-    def start(self):
-        self.server.start()
+#     def start(self):
+#         self.server.start()
 
-    def execute(self, goal):
-        dur = goal.dur
-        # rospy.sleep(self.duration)
-        dur.sleep()
-        self.num_balls = 0
-        self.server.set_succeeded()
+#     def execute(self, goal):
+#         dur = goal.dur
+#         # rospy.sleep(self.duration)
+#         # dur.sleep()
+#         rospy.sleep(5.0)
+#         self.num_balls = 0
+#         self.server.set_succeeded()
 
 class SimVacuum():
 
@@ -81,18 +83,30 @@ class SimVacuum():
         self.state_srv = rospy.Service("vacuum/set_state", SetBool, self.handle_set_state)
         # self.dump_srv = rospy.Service("vacuum/request_dump", SetBool, self.handle_dump)
 
-        self.dump_server = SimDumpServer()
-        self.dump_server.start()
+        # self.dump_server = SimDumpServer()
+        # self.dump_server.start()
         
         rospy.wait_for_service("/gazebo/delete_model")
         self.remove_model_client = rospy.ServiceProxy("/gazebo/delete_model", DeleteModel)
 
+        self.dump_server = actionlib.SimpleActionServer("vacuum/dump", DumpAction, self.execute_dump, False)
+        self.dump_server.start()
+
         self.num_balls = 0
-        self.max_balls = 30
+        self.max_balls = 5
 
         self.vacuum_on = False
 
         self.get_params()
+
+    def execute_dump(self, goal):
+        dur = goal.dur
+        # rospy.sleep(self.duration)
+        # dur.sleep()
+        rospy.sleep(5.0)
+        self.num_balls = 0
+        self.dump_server.set_succeeded()
+
 
     def get_params(self):
         if rospy.has_param("~max_balls"):
