@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <arg name="view" default="false" />
+  <arg name="name" default="camera0" />
+  <arg name="device" default="/dev/video1" />
+  <arg name="calibrate" default="false" />
+  <arg name="cal_args" default="--size 6x4 --square 0.03" />
+
+  <node pkg="usb_cam" type="usb_cam_node" name="$(arg name)" respawn="true">
+    <param name="video_device" value="$(arg device)" />
+
+    <param name="framerate" value="30" />
+    <param name="pixel_format" value="yuyv" />
+
+    <param name="camera_frame_id" value="$(arg name)" />
+    <param name="camera_name" value="$(arg name)" />
+  </node>
+
+  <node unless="$(arg calibrate)" pkg="image_proc" type="image_proc" name="image_proc_$(arg name)" respawn="true" ns="$(arg name)" />
+
+  <node if="$(arg calibrate)" pkg="camera_calibration" type="cameracalibrator.py" name="camera_calibration_$(arg name)" args="$(arg cal_args)">
+    <remap from="image" to="/$(arg name)/image_raw" />
+    <remap from="camera" to="/$(arg name)" />
+  </node>
+
+  <group if="$(arg view)">
+    <!-- <node pkg="image_view" type="image_view" name="$(arg name)_image_raw_view"> -->
+    <!--   <remap from="image" to="/$(arg name)/image_raw" /> -->
+    <!--   <param name="autosize" type="bool" value="true" /> -->
+    <!-- </node> -->
+    <node pkg="image_view" type="image_view" name="$(arg name)_image_rect_color_view">
+      <remap from="image" to="/$(arg name)/image_rect_color" />
+      <param name="autosize" type="bool" value="true" />
+    </node>
+  </group>
+
+</launch>

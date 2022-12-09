@@ -1,0 +1,19 @@
+tag_family: "tag36h11"
+tag_border: 1 
+tag_threads: 2 
+remove_duplicates: true
+
+standalone_tags: []
+tag_bundles: [
+  {
+    name: "home_bundle",
+    layout: 
+      [
+        {id: 0, size: 0.08, x: 0.00, y: 0.00, z: 0.0, qw: 1.0, qx: 0.0, qy: 0.0, qz: 0.0},
+        {id: 1, size: 0.08, x: 0.72, y: 0.00, z: 0.0, qw: 1.0, qx: 0.0, qy: 0.0, qz: 0.0},
+        {id: 2, size: 0.08, x: 0.00, y: 0.72, z: 0.0, qw: 1.0, qx: 0.0, qy: 0.0, qz: 0.0},
+        {id: 3, size: 0.08, x: 0.72, y: 0.72, z: 0.0, qw: 1.0, qx: 0.0, qy: 0.0, qz: 0.0},
+      ]
+  }
+]
+

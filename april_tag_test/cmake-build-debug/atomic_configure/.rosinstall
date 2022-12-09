@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/bscholar/catkin_ws/src/april_tag_test/cmake-build-debug/devel/setup.sh

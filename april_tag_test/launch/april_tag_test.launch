@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <arg name="view" default="false" />
+  <arg name="rviz" default="false" />
+  <arg name="apriltag_params" default="$(find april_tag_test)/config/apriltag.yaml" />
+
+  <include file="$(find april_tag_test)/launch/camera.launch">
+    <arg name="name" value="cam1" />
+    <arg name="device" value="/dev/video4" />
+    <arg name="view" value="$(arg view)" />
+  </include>
+
+
+  <node pkg="apriltag_ros" type="apriltag_ros_continuous_node" name="apriltag">
+    <param name="camera_frame" value="cam1" />
+    <param name="publish_tag_detections_image" value="$(arg view)" />
+    <param name="publish_tf" value="true" />
+
+    <rosparam command="load" file="$(arg apriltag_params)" />
+
+    <remap from="image_rect" to="/cam1/image_rect_color" />
+    <remap from="camera_info" to="/cam1/camera_info" />
+  </node>
+
+
+  <node if="$(arg view)" pkg="image_view" type="image_view" name="apriltag_view">
+    <remap from="image" to="/tag_detections_image" />
+    <param name="autosize" type="bool" value="true" />
+  </node>
+
+  <group if="$(arg rviz)">
+    <node pkg="rviz" type="rviz" name="rviz" />
+
+  </group>
+
+</launch>

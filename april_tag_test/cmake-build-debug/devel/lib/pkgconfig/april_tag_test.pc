@@ -1,0 +1,8 @@
+prefix=/home/bscholar/catkin_ws/src/april_tag_test/cmake-build-debug/devel
+
+Name: april_tag_test
+Description: Description of april_tag_test
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

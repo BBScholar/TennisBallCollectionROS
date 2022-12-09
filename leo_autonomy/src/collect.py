@@ -35,7 +35,6 @@ class CollectNode:
 
         self.sleep_time = rospy.Duration(1.0)
             
-
         self.home_coords = Pose()
         self.home_coords.position.x = 1.0
         self.home_coords.position.y = 1.0
